@@ -28,7 +28,10 @@
             <string>///Initialize the state controller variable
 enum states {
     main,
-    player
+    transition,
+    player,
+    enemy,
+    pause
 }
 
 global.state = states.player;
@@ -54,11 +57,14 @@ global.state = states.player;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Testroom state controller
+            <string>///State controller
 
 switch (global.state){
     case states.main:       state_player_turn();  break;
+    case states.transition:                       break;
     case states.player:                           break;
+    case states.enemy:                            break;
+    case states.pause:                            break;
     default:                                      break;
 }
 

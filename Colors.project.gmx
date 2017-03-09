@@ -5,25 +5,54 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sprites name="sprites">
+    <sprites name="GUI">
+      <sprite>sprites\spr_roll_button</sprite>
+      <sprite>sprites\spr_roll_button_outline</sprite>
+      <sprite>sprites\spr_mana</sprite>
+    </sprites>
+    <sprites name="Characters">
+      <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_enemy</sprite>
+    </sprites>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\bg_demo</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="States">
       <script>scripts\state_player_turn.gml</script>
     </scripts>
-    <script>scripts\scr_game_init.gml</script>
+    <scripts name="Turn order">
+      <script>scripts\scr_player_turn_init.gml</script>
+      <script>scripts\scr_enemy_turn_init.gml</script>
+    </scripts>
+    <scripts name="Misc">
+      <script>scripts\scr_game_init.gml</script>
+      <script>scripts\draw_text_outline.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_overlay</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\obj_state_controller</object>
+    <objects name="Characters">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_player</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\obj_state_controller</object>
+      <object>objects\obj_turn_controller</object>
+    </objects>
     <object>objects\debugger</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_roll_button</object>
-    <object>objects\obj_mana</object>
+    <objects name="GUI">
+      <object>objects\obj_mana</object>
+      <object>objects\obj_roll_button</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_demos</room>
+    <room>rooms\rm_demo</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
