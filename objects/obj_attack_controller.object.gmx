@@ -2,8 +2,8 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,24 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize the state controller variable
-enum states {
-    main,
-    transition,
-    player,
-    player_attack,
-    enemy,
-    enemy_attack,
-    pause
-}
+            <string>///Initialise attack controller
 
-global.state = states.player;
+//The time text is displayed on the screen
+time = 3;
+alarm[0] = room_speed * time;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,17 +52,47 @@ global.state = states.player;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///State controller
+            <string>///Deactivate self if countdown is done
 
-switch (global.state){
-    case states.main:          state_player_turn();  break;
-    case states.transition:                          break;
-    case states.player:                              break;
-    case states.player_attack:                       break;
-    case states.enemy:                               break;
-    case states.enemy_attack:                        break;
-    case states.pause:                               break;
-    default:                                         break;
+instance_deactivate_object(self);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(fnt_overlay);
+draw_set_halign(fa_center);
+draw_set_color(c_white);
+
+if global.state == states.player_attack{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Player attacks",2,c_black);
+}
+
+else if global.state == states.enemy_attack{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Enemy attack",2,c_black);
 }
 
 </string>
