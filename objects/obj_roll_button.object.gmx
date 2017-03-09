@@ -96,6 +96,15 @@ if active{
     if count &gt; 2 {
         with obj_mana{
             selected = true;
+            //Count the colors
+            switch color{
+                case colors.red:    obj_player.mana[colors.red]++;    break;
+                case colors.blue:   obj_player.mana[colors.blue]++;   break;
+                case colors.yellow: obj_player.mana[colors.yellow]++; break;
+                case colors.green:  obj_player.mana[colors.green]++;  break;
+                case colors.white:  obj_player.mana[colors.white]++;  break;
+                case colors.black:  obj_player.mana[colors.black]++;  break;
+            }
         }
         script_execute(scr_player_attack);
     }

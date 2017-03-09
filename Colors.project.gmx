@@ -6,6 +6,10 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="Characters">
+      <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_enemy</sprite>
+    </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_roll_button</sprite>
       <sprite>sprites\spr_roll_button_outline</sprite>
@@ -13,16 +17,20 @@
       <sprite>sprites\spr_mana_select</sprite>
       <sprite>sprites\spr_mana_outline</sprite>
     </sprites>
-    <sprites name="Characters">
-      <sprite>sprites\spr_player</sprite>
-      <sprite>sprites\spr_enemy</sprite>
-    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_demo</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Misc">
+      <script>scripts\scr_game_init.gml</script>
+      <script>scripts\draw_text_outline.gml</script>
+      <script>scripts\scr_create_mana.gml</script>
+      <script>scripts\scr_create_reel.gml</script>
+      <script>scripts\scr_clear_field.gml</script>
+      <script>scripts\scr_create_spell_slots.gml</script>
+    </scripts>
     <scripts name="States">
       <script>scripts\state_player_turn.gml</script>
       <script>scripts\state_enemy_turn.gml</script>
@@ -36,12 +44,13 @@
       <script>scripts\scr_player_attack.gml</script>
       <script>scripts\scr_enemy_attack.gml</script>
     </scripts>
-    <scripts name="Misc">
-      <script>scripts\scr_game_init.gml</script>
-      <script>scripts\draw_text_outline.gml</script>
-      <script>scripts\scr_create_mana.gml</script>
-      <script>scripts\scr_create_reel.gml</script>
-      <script>scripts\scr_clear_field.gml</script>
+    <scripts name="Attacks">
+      <script>scripts\spell_fire_basic.gml</script>
+      <script>scripts\spell_ice_basic.gml</script>
+      <script>scripts\spell_thunder_basic.gml</script>
+      <script>scripts\spell_heal_basic.gml</script>
+      <script>scripts\spell_dud.gml</script>
+      <script>scripts\scr_check_spells.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -61,6 +70,13 @@
     <objects name="GUI">
       <object>objects\obj_mana</object>
       <object>objects\obj_roll_button</object>
+    </objects>
+    <objects name="Spells">
+      <object>objects\obj_fire_basic</object>
+      <object>objects\obj_ice_basic</object>
+      <object>objects\obj_thunder_basic</object>
+      <object>objects\obj_heal_basic</object>
+      <object>objects\obj_spell</object>
     </objects>
   </objects>
   <rooms name="rooms">

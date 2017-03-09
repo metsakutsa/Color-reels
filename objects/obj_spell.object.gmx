@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise attack controller
+            <string>///Initialise spell
 
-//The time text is displayed on the screen
-time = 2;
-alarm[0] = room_speed * time;
+//Mana cost
+cost[colors.red]    = 0;
+cost[colors.blue]   = 0;
+cost[colors.yellow] = 0;
+cost[colors.green]  = 0;
+cost[colors.white]  = 0;
+cost[colors.black]  = 0;
+
+effect = spell_dud;
 </string>
           </argument>
         </arguments>
@@ -52,22 +58,7 @@ alarm[0] = room_speed * time;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Deactivate self if countdown is done
-
-if global.state == states.enemy_attack{
-    global.state = states.e2p_transition;
-    script_execute(scr_e2p_transition);
-    obj_player.hp --;
-}
-
-else if global.state == states.player_attack{
-    scr_check_spells();
-    global.state = states.p2e_transition;
-    script_execute(scr_p2e_transition);
-    
-}
-
-instance_deactivate_object(self);
+            <string>///Countdown for the text
 </string>
           </argument>
         </arguments>
@@ -90,24 +81,15 @@ instance_deactivate_object(self);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_overlay);
+            <string>//Draw some mocking text
+
+draw_set_font(fnt_overlay);
 draw_set_halign(fa_center);
 draw_set_color(c_white);
 
-if global.state == states.player_attack{
-    if alarm[0] == -1 {
-        alarm[0] = room_speed * time;
-    }
-    draw_text_outline(room_width/2, room_height/2-50, "Player attacks",2,c_black);
+if alarm[0] != -1{
+    draw_text_outline(room_width/2, room_height/2-50, "The spell failed", 2, c_black);
 }
-
-else if global.state == states.enemy_attack{
-    if alarm[0] == -1 {
-        alarm[0] = room_speed * time;
-    }
-    draw_text_outline(room_width/2, room_height/2-50, "Enemy attacks",2,c_black);
-}
-
 </string>
           </argument>
         </arguments>
