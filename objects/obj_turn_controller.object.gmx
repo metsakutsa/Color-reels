@@ -28,7 +28,7 @@
             <string>///Initialise turn controller
 
 //The time text is displayed on the screen
-time = 3;
+time = 2;
 </string>
           </argument>
         </arguments>
@@ -51,7 +51,15 @@ time = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Deactivate self if countdown is done
+            <string>///Deactivate self if countdown is done and go to the next state
+
+if global.state == states.e2p_transition{
+    script_execute(scr_player_turn_init);
+}
+
+else if global.state == states.p2e_transition{
+    script_execute(scr_enemy_turn_init);
+}
 
 instance_deactivate_object(self);
 </string>
@@ -80,14 +88,14 @@ instance_deactivate_object(self);
 draw_set_halign(fa_center);
 draw_set_color(c_white);
 
-if global.state == states.player{
+if global.state == states.e2p_transition{
     if alarm[0] == -1 {
         alarm[0] = room_speed * time;
     }
     draw_text_outline(room_width/2, room_height/2-50, "Player's turn",2,c_black);
 }
 
-else if global.state == states.enemy{
+else if global.state == states.p2e_transition{
     if alarm[0] == -1 {
         alarm[0] = room_speed * time;
     }

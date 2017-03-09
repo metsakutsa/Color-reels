@@ -57,6 +57,14 @@ count = 0;
           <argument>
             <kind>1</kind>
             <string>///Step event....
+
+if global.state == states.player{
+    active = true;
+}
+
+else {
+    active = false;
+}
 </string>
           </argument>
         </arguments>
@@ -85,8 +93,21 @@ if active{
     //Increase click count
     count ++;
     
-    if count &gt; 3 {
-        count = 0;
+    if count &gt; 2 {
+        with obj_mana{
+            selected = true;
+        }
+        script_execute(scr_player_attack);
+    }
+    else {
+        with obj_mana{
+            if not selected{
+                var xx = x;
+                var yy = y;
+                instance_destroy();
+                scr_create_mana(xx, yy);
+            }
+        }
     }
 }
 </string>
@@ -132,8 +153,13 @@ if active{
     }
 }
 
+//Otherwise don't draw any special border
+else {
+    draw_sprite(spr_roll_button, -1, x, y);
+}
+
 //Change image if click count exceeds 2
-if count &gt; 2 {
+if count &gt; 1 {
     image_index = 1;
 }
 else {

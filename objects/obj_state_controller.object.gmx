@@ -28,7 +28,8 @@
             <string>///Initialize the state controller variable
 enum states {
     main,
-    transition,
+    p2e_transition,
+    e2p_transition,
     player,
     player_attack,
     enemy,
@@ -62,14 +63,15 @@ global.state = states.player;
             <string>///State controller
 
 switch (global.state){
-    case states.main:          state_player_turn();  break;
-    case states.transition:                          break;
-    case states.player:                              break;
-    case states.player_attack:                       break;
-    case states.enemy:                               break;
-    case states.enemy_attack:                        break;
-    case states.pause:                               break;
-    default:                                         break;
+    case states.main:           state_player_turn();  break;
+    case states.p2e_transition:                     ; break;
+    case states.e2p_transition:                     ; break;
+    case states.player:         state_player_turn();  break;
+    case states.player_attack:                     ;  break;
+    case states.enemy:          state_enemy_turn();   break;
+    case states.enemy_attack:                     ;   break;
+    case states.pause:          state_pause();        break;
+    default:                                          break;
 }
 
 </string>
