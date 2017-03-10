@@ -16,6 +16,7 @@
       <sprite>sprites\spr_mana</sprite>
       <sprite>sprites\spr_mana_select</sprite>
       <sprite>sprites\spr_mana_outline</sprite>
+      <sprite>sprites\spr_spell_slot</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -55,6 +56,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_overlay</font>
+    <font>fonts\fnt_menu</font>
   </fonts>
   <objects name="objects">
     <objects name="Characters">
@@ -76,7 +78,7 @@
       <object>objects\obj_ice_basic</object>
       <object>objects\obj_thunder_basic</object>
       <object>objects\obj_heal_basic</object>
-      <object>objects\obj_spell</object>
+      <object>objects\obj_spell_parent</object>
     </objects>
   </objects>
   <rooms name="rooms">
