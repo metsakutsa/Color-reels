@@ -35,8 +35,9 @@ cost[colors.green]  = 0;
 cost[colors.white]  = 2;
 cost[colors.black]  = 0;
 
-name = "Heal";
-effect = spell_heal_basic;
+name        = "Heal";
+effect      = spell_heal_basic;
+description = "Basic healing spell. Heals you HP a little.";
 </string>
           </argument>
         </arguments>

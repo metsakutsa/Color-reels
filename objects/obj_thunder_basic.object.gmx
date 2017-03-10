@@ -35,8 +35,9 @@ cost[colors.green]  = 0;
 cost[colors.white]  = 0;
 cost[colors.black]  = 0;
 
-name = "Thunder";
-effect = spell_thunder_basic;
+name        = "Thunder";
+effect      = spell_thunder_basic;
+description = "Basic thunder spell. Deals damage to one enemy.";
 </string>
           </argument>
         </arguments>

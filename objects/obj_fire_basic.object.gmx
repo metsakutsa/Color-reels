@@ -35,8 +35,9 @@ cost[colors.green]  = 0;
 cost[colors.white]  = 0;
 cost[colors.black]  = 0;
 
-name = "Fire";
-effect = spell_fire_basic;
+name        = "Fire";
+effect      = spell_fire_basic;
+description = "Basic fire spell. Deals damage to one enemy.";
 </string>
           </argument>
         </arguments>
