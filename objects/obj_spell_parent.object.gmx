@@ -67,12 +67,14 @@ description = "This is a spell";
             <kind>1</kind>
             <string>///Show detailed info when clicked
 
-//global.previous_state = global.state;
-//global.state = states.pause;
-
-var popup = instance_create(mouse_x, mouse_y, obj_spell_details);
-popup.description = description;
-
+if global.state == states.player {    
+    if position_meeting(mouse_x, mouse_y, obj_spell_details){
+        var popup = instance_create(mouse_x, mouse_y, obj_spell_details);
+        popup.description = description;
+    }
+    
+    else {}
+}
 </string>
           </argument>
         </arguments>

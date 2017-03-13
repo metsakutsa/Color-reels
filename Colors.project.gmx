@@ -32,7 +32,6 @@
       <script>scripts\scr_create_reel.gml</script>
       <script>scripts\scr_clear_field.gml</script>
       <script>scripts\scr_create_spell_slots.gml</script>
-      <script>scripts\scr_text.gml</script>
     </scripts>
     <scripts name="States">
       <script>scripts\state_player_turn.gml</script>
@@ -75,7 +74,6 @@
       <object>objects\obj_mana</object>
       <object>objects\obj_roll_button</object>
       <object>objects\obj_spell_details</object>
-      <object>objects\obj_text</object>
     </objects>
     <objects name="Spells">
       <object>objects\obj_fire_basic</object>
