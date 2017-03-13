@@ -67,8 +67,10 @@ description = "This is a spell";
             <kind>1</kind>
             <string>///Show detailed info when clicked
 
-if global.state == states.player {    
-    if position_meeting(mouse_x, mouse_y, obj_spell_details){
+if global.state == states.player {
+    global.previous_state = global.state;
+    global.state = states.pause;
+    if not position_meeting(mouse_x, mouse_y, obj_spell_details){
         var popup = instance_create(mouse_x, mouse_y, obj_spell_details);
         popup.description = description;
     }

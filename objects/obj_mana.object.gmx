@@ -134,7 +134,7 @@ if active{
             <kind>1</kind>
             <string>///Draw sprite and overlay
 
-if active or global.state == states.player_attack{
+if active or global.state == states.player_attack or global.state == states.pause{
     //If clicked then draw overlay and mark as selected
     if not selected {
         //If hovered then draw outline
