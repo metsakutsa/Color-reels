@@ -34,7 +34,9 @@ enum states {
     player_attack,
     enemy,
     enemy_attack,
-    pause
+    pause,
+    player_win,
+    gameover
 }
 
 global.previous_state = noone;
@@ -65,13 +67,15 @@ global.state = states.player;
 
 switch (global.state){
     case states.main:           state_player_turn();  break;
-    case states.p2e_transition:                     ; break;
-    case states.e2p_transition:                     ; break;
+    case states.p2e_transition:                       break;
+    case states.e2p_transition:                       break;
     case states.player:         state_player_turn();  break;
-    case states.player_attack:                     ;  break;
+    case states.player_attack:                        break;
     case states.enemy:          state_enemy_turn();   break;
-    case states.enemy_attack:                     ;   break;
+    case states.enemy_attack:                         break;
     case states.pause:          state_pause();        break;
+    case states.player_win:                           break;    
+    case states.gameover:       state_game_over();    break;
     default:                                          break;
 }
 

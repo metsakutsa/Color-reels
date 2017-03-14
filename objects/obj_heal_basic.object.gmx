@@ -37,7 +37,7 @@ cost[colors.black]  = 0;
 
 name        = "Heal";
 effect      = spell_heal_basic;
-description = "Basic healing spell. Heals you HP a little.";
+description = "Basic healing spell. Heals your HP a little.";
 </string>
           </argument>
         </arguments>

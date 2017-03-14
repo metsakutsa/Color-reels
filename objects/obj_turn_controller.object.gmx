@@ -61,6 +61,10 @@ else if global.state == states.p2e_transition{
     script_execute(scr_enemy_turn_init);
 }
 
+else if global.state == states.player_win{
+
+}
+
 instance_deactivate_object(self);
 </string>
           </argument>
@@ -102,6 +106,12 @@ else if global.state == states.p2e_transition{
     draw_text_outline(room_width/2, room_height/2-50, "Enemy's turn",2,c_black);
 }
 
+else if global.state == states.player_win{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Player won!!!",2,c_black);
+}
 </string>
           </argument>
         </arguments>

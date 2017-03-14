@@ -67,7 +67,10 @@ else if global.state == states.player_attack{
     
 }
 
+
 instance_deactivate_object(self);
+
+
 </string>
           </argument>
         </arguments>
