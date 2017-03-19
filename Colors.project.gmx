@@ -78,6 +78,7 @@
       <object>objects\obj_mana</object>
       <object>objects\obj_roll_button</object>
       <object>objects\obj_spell_details</object>
+      <object>objects\obj_enemy_details</object>
     </objects>
     <objects name="Spells">
       <object>objects\obj_fire_basic</object>

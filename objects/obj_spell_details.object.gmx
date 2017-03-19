@@ -26,12 +26,19 @@
           <argument>
             <kind>1</kind>
             <string>///Init the textbox
-width = 192;
-height = 80;
+width = 183;
+height = 121;
 padding = 8;
 
 //Set the message
 description = "";
+
+//Placement
+xx = 288;
+yy = 193;
+
+x = xx;
+y = yy;
 </string>
           </argument>
         </arguments>
@@ -54,9 +61,9 @@ description = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Kill itself when right mouse is clicked
-global.state = global.previous_state;
+            <string>///Destroy and go to previous state
 instance_destroy();
+global.state = global.previous_state;
 </string>
           </argument>
         </arguments>
@@ -109,14 +116,25 @@ instance_destroy();
 
 draw_set_font(fnt_menu);
 draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_set_color(c_white);
+draw_set_color(c_black);
 
+
+//Draw sprite
+draw_sprite(sprite_index, -1, xx, yy);
+
+//draw_sprite_ext(sprite_index, -1, x, y, 1, 1, 0, c_white, 1);
+
+//Draw text
+draw_text_ext(xx+padding, yy+padding, description, padding*2, width);
+
+//draw_text_outline(xx+padding-width, yy+padding, description, 1, c_black);
+
+/*
 draw_set_alpha(.9);
 draw_roundrect_color(x,y,x-width,y-height, c_black, c_black, false);
-//draw_sprite_ext(sprite_index, -1, x-width+padding, y-height+padding, 1, 1, 0, c_black, 0.5);
 
 draw_set_alpha(1);
+
 //Draw text
 draw_text_ext(x+padding-width, y+padding-height, description, padding*2, width);
 
