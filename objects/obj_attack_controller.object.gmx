@@ -55,18 +55,20 @@ alarm[0] = room_speed * time;
             <string>///Deactivate self if countdown is done
 
 if global.state == states.enemy_attack{
+    if obj_enemy.cooldown &lt; 1 {
+        script_execute(obj_enemy.skill);
+    }
+    else obj_player.hp -= obj_enemy.attack;
+    
     global.state = states.e2p_transition;
     script_execute(scr_e2p_transition);
-    obj_player.hp --;
 }
 
 else if global.state == states.player_attack{
     scr_check_spells();
     global.state = states.p2e_transition;
     script_execute(scr_p2e_transition);
-    
 }
-
 
 instance_deactivate_object(self);
 

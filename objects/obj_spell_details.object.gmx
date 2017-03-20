@@ -125,7 +125,7 @@ draw_sprite(sprite_index, -1, xx, yy);
 //draw_sprite_ext(sprite_index, -1, x, y, 1, 1, 0, c_white, 1);
 
 //Draw text
-draw_text_ext(xx+padding, yy+padding, description, padding*2, width);
+draw_text_ext(xx+padding, yy+padding, description, padding*2, width-padding*2);
 
 //draw_text_outline(xx+padding-width, yy+padding, description, 1, c_black);
 

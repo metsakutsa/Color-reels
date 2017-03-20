@@ -57,6 +57,7 @@
       <script>scripts\spell_heal_basic.gml</script>
       <script>scripts\spell_dud.gml</script>
       <script>scripts\scr_check_spells.gml</script>
+      <script>scripts\scr_enemy_skill.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
