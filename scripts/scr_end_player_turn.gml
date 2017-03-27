@@ -6,3 +6,5 @@ with obj_mana{
 with obj_roll_button{
     instance_destroy();
 }
+
+scr_state(states.enemy);

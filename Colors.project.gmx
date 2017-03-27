@@ -28,12 +28,20 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Attacks">
+      <script>scripts\spell_fire_basic.gml</script>
+      <script>scripts\spell_ice_basic.gml</script>
+      <script>scripts\spell_thunder_basic.gml</script>
+      <script>scripts\spell_heal_basic.gml</script>
+      <script>scripts\spell_dud.gml</script>
+      <script>scripts\scr_check_spells.gml</script>
+      <script>scripts\scr_enemy_skill.gml</script>
+    </scripts>
     <scripts name="Misc">
       <script>scripts\scr_game_init.gml</script>
       <script>scripts\draw_text_outline.gml</script>
       <script>scripts\scr_create_mana.gml</script>
       <script>scripts\scr_create_reel.gml</script>
-      <script>scripts\scr_clear_field.gml</script>
       <script>scripts\scr_create_spell_slots.gml</script>
     </scripts>
     <scripts name="States">
@@ -47,20 +55,9 @@
     </scripts>
     <scripts name="Turn order">
       <script>scripts\scr_player_turn_init.gml</script>
-      <script>scripts\scr_enemy_turn_init.gml</script>
-      <script>scripts\scr_p2e_transition.gml</script>
-      <script>scripts\scr_e2p_transition.gml</script>
       <script>scripts\scr_player_attack.gml</script>
       <script>scripts\scr_enemy_attack.gml</script>
-    </scripts>
-    <scripts name="Attacks">
-      <script>scripts\spell_fire_basic.gml</script>
-      <script>scripts\spell_ice_basic.gml</script>
-      <script>scripts\spell_thunder_basic.gml</script>
-      <script>scripts\spell_heal_basic.gml</script>
-      <script>scripts\spell_dud.gml</script>
-      <script>scripts\scr_check_spells.gml</script>
-      <script>scripts\scr_enemy_skill.gml</script>
+      <script>scripts\scr_end_player_turn.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -73,9 +70,6 @@
       <object>objects\obj_player</object>
     </objects>
     <objects name="Controllers">
-      <object>objects\obj_state_controller</object>
-      <object>objects\obj_turn_controller</object>
-      <object>objects\obj_attack_controller</object>
       <object>objects\obj_state_machine</object>
     </objects>
     <object>objects\debugger</object>

@@ -82,9 +82,9 @@ ds_map_add(state, states.pause,        "Paused");
 
 if global.state == states.transition {
     switch (global.previous_state){
-        case states.player:     scr_state(states.enemy);    break;
-        case states.enemy:      scr_state(states.player);   break;
-        default:                scr_state(global.state);    break;
+        case states.player: scr_end_player_turn();      break;
+        case states.enemy:  scr_player_turn_init();     break;
+        default:            scr_state(global.state);    break;
     }
 }
 </string>
