@@ -42,7 +42,6 @@ enum colors{
     none
 }
 
-active = false;
 selected = false;
 </string>
           </argument>
@@ -70,13 +69,6 @@ selected = false;
 
 image_index = color;
 
-if global.state == states.player{
-    active = true;
-}
-
-else {
-    active = false;
-}
 </string>
           </argument>
         </arguments>
@@ -101,14 +93,12 @@ else {
             <kind>1</kind>
             <string>///Mark as selected if clicked
 
-if active{
-    if not selected {
-        selected = true;
-    }
-    
-    else if selected {
-        selected = false;
-    }
+if not selected {
+    selected = true;
+}
+
+else if selected {
+    selected = false;
 }
 </string>
           </argument>
@@ -134,25 +124,23 @@ if active{
             <kind>1</kind>
             <string>///Draw sprite and overlay
 
-if active or global.state == states.player_attack or global.state == states.pause{
-    //If clicked then draw overlay and mark as selected
-    if not selected {
-        //If hovered then draw outline
-        if (position_meeting(mouse_x,mouse_y,self)){
-            draw_sprite(spr_mana, -1, x, y);
-            draw_sprite(spr_mana_outline, 0, x, y);
-        }
-        //Else draw normal sprite
-        else{
-            draw_sprite(spr_mana, -1, x, y);
-        }
-    }
-    
-    //Otherwise if selected, draw select overlay
-    else if selected{
+//If clicked then draw overlay and mark as selected
+if not selected {
+    //If hovered then draw outline
+    if (position_meeting(mouse_x,mouse_y,self)){
         draw_sprite(spr_mana, -1, x, y);
-        draw_sprite(spr_mana_select, 0, x, y);
+        draw_sprite(spr_mana_outline, 0, x, y);
     }
+    //Else draw normal sprite
+    else{
+        draw_sprite(spr_mana, -1, x, y);
+    }
+}
+
+//Otherwise if selected, draw select overlay
+else if selected{
+    draw_sprite(spr_mana, -1, x, y);
+    draw_sprite(spr_mana_select, 0, x, y);
 }
 </string>
           </argument>

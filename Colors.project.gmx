@@ -41,6 +41,9 @@
       <script>scripts\state_enemy_turn.gml</script>
       <script>scripts\state_pause.gml</script>
       <script>scripts\state_game_over.gml</script>
+      <scripts name="State machine scripts">
+        <script>scripts\scr_state.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Turn order">
       <script>scripts\scr_player_turn_init.gml</script>
@@ -73,6 +76,7 @@
       <object>objects\obj_state_controller</object>
       <object>objects\obj_turn_controller</object>
       <object>objects\obj_attack_controller</object>
+      <object>objects\obj_state_machine</object>
     </objects>
     <object>objects\debugger</object>
     <objects name="GUI">

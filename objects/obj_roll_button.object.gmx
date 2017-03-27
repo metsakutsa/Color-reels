@@ -29,8 +29,6 @@
 
 image_speed = 0;
 
-//If the button is clickable or not
-active = true;
 
 //How many times the button has been clicked turing the turn
 count = 0;
@@ -58,13 +56,6 @@ count = 0;
             <kind>1</kind>
             <string>///Step event....
 
-if global.state == states.player{
-    active = true;
-}
-
-else {
-    active = false;
-}
 </string>
           </argument>
         </arguments>
@@ -89,33 +80,31 @@ else {
             <kind>1</kind>
             <string>///Roll reels if clicked
 
-if active{
-    //Increase click count
-    count ++;
-    
-    if count &gt; 2 {
-        with obj_mana{
-            selected = true;
-            //Count the colors
-            switch color{
-                case colors.red:    obj_player.mana[colors.red]++;    break;
-                case colors.blue:   obj_player.mana[colors.blue]++;   break;
-                case colors.yellow: obj_player.mana[colors.yellow]++; break;
-                case colors.green:  obj_player.mana[colors.green]++;  break;
-                case colors.white:  obj_player.mana[colors.white]++;  break;
-                case colors.black:  obj_player.mana[colors.black]++;  break;
-            }
+//Increase click count
+count ++;
+
+if count &gt; 2 {
+    with obj_mana{
+        selected = true;
+        //Count the colors
+        switch color{
+            case colors.red:    obj_player.mana[colors.red]++;    break;
+            case colors.blue:   obj_player.mana[colors.blue]++;   break;
+            case colors.yellow: obj_player.mana[colors.yellow]++; break;
+            case colors.green:  obj_player.mana[colors.green]++;  break;
+            case colors.white:  obj_player.mana[colors.white]++;  break;
+            case colors.black:  obj_player.mana[colors.black]++;  break;
         }
-        script_execute(scr_player_attack);
     }
-    else {
-        with obj_mana{
-            if not selected{
-                var xx = x;
-                var yy = y;
-                instance_destroy();
-                scr_create_mana(xx, yy);
-            }
+    script_execute(scr_player_attack);
+}
+else {
+    with obj_mana{
+        if not selected{
+            var xx = x;
+            var yy = y;
+            instance_destroy();
+            scr_create_mana(xx, yy);
         }
     }
 }
@@ -143,36 +132,22 @@ if active{
             <kind>1</kind>
             <string>///Draw sprite in variable situations
 
-if active{
-    //If clicked then draw red border
-    if (position_meeting(mouse_x,mouse_y,self) and mouse_check_button(mb_left)){
-        draw_sprite(spr_roll_button, -1, x, y);
-        draw_sprite(spr_roll_button_outline, 1, x, y);
-    }
-    
-    //If hovered then draw yellow border
-    else if (position_meeting(mouse_x,mouse_y,self)){
-        draw_sprite(spr_roll_button, -1, x, y);
-        draw_sprite(spr_roll_button_outline, 0, x, y);
-    }
-    
-    //Otherwise don't draw any special border
-    else {
-        draw_sprite(spr_roll_button, -1, x, y);
-    }
+
+//If clicked then draw red border
+if (position_meeting(mouse_x,mouse_y,self) and mouse_check_button(mb_left)){
+    draw_sprite(spr_roll_button, -1, x, y);
+    draw_sprite(spr_roll_button_outline, 1, x, y);
+}
+
+//If hovered then draw yellow border
+else if (position_meeting(mouse_x,mouse_y,self)){
+    draw_sprite(spr_roll_button, -1, x, y);
+    draw_sprite(spr_roll_button_outline, 0, x, y);
 }
 
 //Otherwise don't draw any special border
 else {
     draw_sprite(spr_roll_button, -1, x, y);
-}
-
-//Change image if click count exceeds 2
-if count &gt; 1 {
-    image_index = 1;
-}
-else {
-    image_index = 0;
 }
 </string>
           </argument>

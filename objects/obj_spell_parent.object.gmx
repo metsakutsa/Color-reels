@@ -66,7 +66,7 @@ description = "This is a spell";
           <argument>
             <kind>1</kind>
             <string>//Deactivate unless player turn state or pause
-
+/*
 if global.state == states.player or global.state == states.pause
     or global.state == states.player_attack or global.state == states.player_win{
     //Be active

@@ -122,22 +122,8 @@ draw_set_color(c_black);
 //Draw sprite
 draw_sprite(sprite_index, -1, xx, yy);
 
-//draw_sprite_ext(sprite_index, -1, x, y, 1, 1, 0, c_white, 1);
-
 //Draw text
 draw_text_ext(xx+padding, yy+padding, description, padding*2, width-padding*2);
-
-//draw_text_outline(xx+padding-width, yy+padding, description, 1, c_black);
-
-/*
-draw_set_alpha(.9);
-draw_roundrect_color(x,y,x-width,y-height, c_black, c_black, false);
-
-draw_set_alpha(1);
-
-//Draw text
-draw_text_ext(x+padding-width, y+padding-height, description, padding*2, width);
-
 </string>
           </argument>
         </arguments>

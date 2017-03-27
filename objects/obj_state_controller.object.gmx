@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize the state controller variable
+
+/*
 enum states {
     main,
     p2e_transition,

@@ -3,11 +3,95 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Initialize 
+
+//Global variables
+global.state = noone;
+global.previous_state = noone;
+
+//Time to display transition messages
+time_trans = room_speed * 2;
+
+//States map
+state = ds_map_create();
+
+enum states {
+    main,
+    transition,
+    p2e_transition,
+    e2p_transition,
+    player,
+    player_attack,
+    enemy,
+    enemy_attack,
+    pause,
+    player_win,
+    gameover
+}
+
+ds_map_add(state, states.player,       "Player's turn");
+ds_map_add(state, states.enemy,        "Enemy's turn");
+ds_map_add(state, states.transition,   "End turn");
+ds_map_add(state, states.pause,        "Paused");
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Transition timer
+
+if global.state == states.transition {
+    switch (global.previous_state){
+        case states.player:     scr_state(states.enemy);    break;
+        case states.enemy:      scr_state(states.player);   break;
+        default:                scr_state(global.state);    break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,16 +109,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(ord("1")){
-    scr_state(states.player);
-}
+            <string>///State controller
 
-if keyboard_check_pressed(ord("2")){
-    scr_state(states.transition);
-}
-
-if keyboard_check_pressed(ord("3")){
-    scr_state(states.enemy);
+switch (global.state){
+    case states.main:           state_player_turn();  break;
+    case states.transition:                           break;
+    case states.p2e_transition:                       break;
+    case states.e2p_transition:                       break;
+    case states.player:         state_player_turn();  break;
+    case states.player_attack:                        break;
+    case states.enemy:          state_enemy_turn();   break;
+    case states.enemy_attack:                         break;
+    case states.pause:          state_pause();        break;
+    case states.player_win:                           break;    
+    case states.gameover:       state_game_over();    break;
+    default:                                          break;
 }
 
 </string>
@@ -42,7 +131,7 @@ if keyboard_check_pressed(ord("3")){
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,86 +148,63 @@ if keyboard_check_pressed(ord("3")){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw state info on screen
-
-
-draw_set_font(fnt_menu);
+            <string>///Destroy DS map
+ds_map_destroy(state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw phase name on transition state
+draw_set_font(fnt_overlay);
+draw_set_halign(fa_center);
 draw_set_color(c_white);
-draw_set_halign(fa_left);
 
-draw_text_outline(10,room_height-30, "State: " + string(ds_map_find_value(obj_state_machine.state, global.state)), 1, c_black);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="37">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>show_debug_message("State: " + string(global.state));
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with obj_mana{
-    instance_destroy();
+if alarm[0] != -1 {
+    draw_text_outline(room_width/2, room_height/2-50, 
+    string(ds_map_find_value(state, global.state)),2,c_black);
 }
-scr_game_init();
+
+
+
+/*
+if global.state == states.e2p_transition{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Player's turn",2,c_black);
+}
+
+else if global.state == states.p2e_transition{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Enemy's turn",2,c_black);
+}
+
+else if global.state == states.player_win{
+    if alarm[0] == -1 {
+        alarm[0] = room_speed * time;
+    }
+    draw_text_outline(room_width/2, room_height/2-50, "Player won!!!",2,c_black);
+}
 </string>
           </argument>
         </arguments>
