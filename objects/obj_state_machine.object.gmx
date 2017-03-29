@@ -40,21 +40,22 @@ state = ds_map_create();
 enum states {
     main,
     transition,
-    p2e_transition,
-    e2p_transition,
     player,
     player_attack,
     enemy,
     enemy_attack,
     pause,
     player_win,
+    player_lose,
     gameover
 }
 
-ds_map_add(state, states.player,       "Player's turn");
-ds_map_add(state, states.enemy,        "Enemy's turn");
-ds_map_add(state, states.transition,   "End turn");
-ds_map_add(state, states.pause,        "Paused");
+ds_map_add(state, states.player,        scr_player_turn_init);
+ds_map_add(state, states.enemy,         scr_enemy_turn_init);
+ds_map_add(state, states.transition,    scr_transition);
+ds_map_add(state, states.pause,         scr_pause);
+ds_map_add(state, states.player_attack, scr_player_attack);
+ds_map_add(state, states.enemy_attack,  scr_enemy_attack);
 
 </string>
           </argument>
@@ -80,13 +81,11 @@ ds_map_add(state, states.pause,        "Paused");
             <kind>1</kind>
             <string>///Transition timer
 
-if global.state == states.transition {
-    switch (global.previous_state){
-        case states.player: scr_end_player_turn();      break;
-        case states.enemy:  scr_player_turn_init();     break;
-        default:            scr_state(global.state);    break;
-    }
-}
+//Is called from scr_state() script whenever a new state is loaded, 
+//the state transition takes a time equal to the variable time_trans
+//set in this object's create event
+
+script_execute(ds_map_find_value(state, global.state));
 </string>
           </argument>
         </arguments>
@@ -111,21 +110,20 @@ if global.state == states.transition {
             <kind>1</kind>
             <string>///State controller
 
+/*
 switch (global.state){
-    case states.main:           state_player_turn();  break;
-    case states.transition:                           break;
-    case states.p2e_transition:                       break;
-    case states.e2p_transition:                       break;
-    case states.player:         state_player_turn();  break;
-    case states.player_attack:                        break;
-    case states.enemy:          state_enemy_turn();   break;
-    case states.enemy_attack:                         break;
-    case states.pause:          state_pause();        break;
-    case states.player_win:                           break;    
-    case states.gameover:       state_game_over();    break;
-    default:                                          break;
+    case states.main:                                   break;
+    case states.transition:                             break;
+    case states.player:         state_player_turn();    break;
+    case states.player_attack:                          break;
+    case states.enemy:          state_enemy_turn();     break;
+    case states.enemy_attack:                           break;
+    case states.pause:          scr_pause();            break;
+    case states.player_win:                             break;
+    case states.player_lose:                            break;      
+    case states.gameover:       state_game_over();      break;
+    default:                                            break;
 }
-
 </string>
           </argument>
         </arguments>
@@ -177,33 +175,8 @@ draw_set_font(fnt_overlay);
 draw_set_halign(fa_center);
 draw_set_color(c_white);
 
-if alarm[0] != -1 {
-    draw_text_outline(room_width/2, room_height/2-50, 
-    string(ds_map_find_value(state, global.state)),2,c_black);
-}
-
-
-
-/*
-if global.state == states.e2p_transition{
-    if alarm[0] == -1 {
-        alarm[0] = room_speed * time;
-    }
-    draw_text_outline(room_width/2, room_height/2-50, "Player's turn",2,c_black);
-}
-
-else if global.state == states.p2e_transition{
-    if alarm[0] == -1 {
-        alarm[0] = room_speed * time;
-    }
-    draw_text_outline(room_width/2, room_height/2-50, "Enemy's turn",2,c_black);
-}
-
-else if global.state == states.player_win{
-    if alarm[0] == -1 {
-        alarm[0] = room_speed * time;
-    }
-    draw_text_outline(room_width/2, room_height/2-50, "Player won!!!",2,c_black);
+if alarm[0] != -1 and global.state == states.transition{
+    draw_text_outline(room_width/2, room_height/2-50, "End turn", 2, c_black);
 }
 </string>
           </argument>

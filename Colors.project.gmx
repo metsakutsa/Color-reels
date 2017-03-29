@@ -47,7 +47,7 @@
     <scripts name="States">
       <script>scripts\state_player_turn.gml</script>
       <script>scripts\state_enemy_turn.gml</script>
-      <script>scripts\state_pause.gml</script>
+      <script>scripts\scr_pause.gml</script>
       <script>scripts\state_game_over.gml</script>
       <scripts name="State machine scripts">
         <script>scripts\scr_state.gml</script>
@@ -58,6 +58,8 @@
       <script>scripts\scr_player_attack.gml</script>
       <script>scripts\scr_enemy_attack.gml</script>
       <script>scripts\scr_end_player_turn.gml</script>
+      <script>scripts\scr_transition.gml</script>
+      <script>scripts\scr_enemy_turn_init.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

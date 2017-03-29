@@ -7,4 +7,3 @@ for (var i = 0; i < 6; i++){
 
 scr_create_reel();
 
-scr_state(states.player);
