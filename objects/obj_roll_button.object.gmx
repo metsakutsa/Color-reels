@@ -96,7 +96,7 @@ if count &gt; 2 {
             case colors.black:  obj_player.mana[colors.black]++;  break;
         }
     }
-    script_execute(scr_player_attack);
+    scr_state(states.player_attack);
 }
 else {
     with obj_mana{

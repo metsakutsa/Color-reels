@@ -82,7 +82,7 @@ scr_create_spell_slots();
 
 if hp &lt;= 0 {
     hp = 0;
-    global.state = states.gameover;
+    scr_state(states.gameover);
 }
 </string>
           </argument>

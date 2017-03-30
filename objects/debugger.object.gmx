@@ -119,9 +119,7 @@ draw_text_outline(10,room_height-30, "State: " + string(ds_map_find_value(obj_st
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_message("State: " + string(global.state));
-
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

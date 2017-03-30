@@ -73,13 +73,8 @@ skill = scr_enemy_skill;
             <kind>1</kind>
             <string>///Deal with being dead
 
-show_debug_message("Here");
-//Create the controller that transits
-instance_activate_object(obj_turn_controller);
-obj_turn_controller.alarm[0] = room_speed * obj_turn_controller.time;
-
-//And set the according state
-global.state = states.player_win;
+//Set the according state
+scr_state(states.player_win);
 
 instance_destroy();
 </string>
@@ -203,7 +198,7 @@ draw_set_font(fnt_menu);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
 
-draw_text_outline(x + sprite_width - 5, y + sprite_height + 5, cooldown, 1, c_black);
+draw_text_outline(x + sprite_width + 3, y + sprite_height-10, cooldown, 1, c_black);
 </string>
           </argument>
         </arguments>
