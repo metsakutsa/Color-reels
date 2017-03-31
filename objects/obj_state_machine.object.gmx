@@ -31,6 +31,8 @@
 global.state = noone;
 global.previous_state = noone;
 
+new_state = noone;
+
 //Time to display transition messages
 time_trans = room_speed * 2;
 
@@ -171,6 +173,8 @@ ds_map_destroy(state);
           <argument>
             <kind>1</kind>
             <string>///Draw phase name on transition state
+
+/*
 draw_set_font(fnt_overlay);
 draw_set_halign(fa_center);
 draw_set_color(c_white);

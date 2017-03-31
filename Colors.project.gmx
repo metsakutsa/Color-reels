@@ -43,6 +43,7 @@
       <script>scripts\scr_create_mana.gml</script>
       <script>scripts\scr_create_reel.gml</script>
       <script>scripts\scr_create_spell_slots.gml</script>
+      <script>scripts\scr_draw_text.gml</script>
     </scripts>
     <scripts name="States">
       <script>scripts\scr_pause.gml</script>
@@ -75,6 +76,7 @@
       <object>objects\obj_roll_button</object>
       <object>objects\obj_spell_details</object>
       <object>objects\obj_enemy_details</object>
+      <object>objects\obj_text</object>
     </objects>
     <objects name="Spells">
       <object>objects\obj_fire_basic</object>

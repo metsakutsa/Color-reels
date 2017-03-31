@@ -2,6 +2,7 @@
 
 //Go to state given as argument
 global.previous_state = global.state;
+//obj_state_machine.new_state = argument0;
 global.state = argument0;
 
 
