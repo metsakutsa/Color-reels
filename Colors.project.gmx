@@ -46,16 +46,18 @@
       <script>scripts\scr_draw_text.gml</script>
     </scripts>
     <scripts name="States">
+      <scripts name="Enemy">
+        <script>scripts\scr_enemy_turn_init.gml</script>
+        <script>scripts\scr_enemy_attack.gml</script>
+      </scripts>
+      <scripts name="Player">
+        <script>scripts\scr_player_attack.gml</script>
+        <script>scripts\scr_player_turn_init.gml</script>
+        <script>scripts\scr_end_player_turn.gml</script>
+      </scripts>
       <script>scripts\scr_pause.gml</script>
       <script>scripts\scr_state.gml</script>
-    </scripts>
-    <scripts name="Turn order">
-      <script>scripts\scr_player_turn_init.gml</script>
-      <script>scripts\scr_player_attack.gml</script>
-      <script>scripts\scr_enemy_attack.gml</script>
-      <script>scripts\scr_end_player_turn.gml</script>
       <script>scripts\scr_transition.gml</script>
-      <script>scripts\scr_enemy_turn_init.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

@@ -81,13 +81,17 @@ ds_map_add(state, states.enemy_attack,  scr_enemy_attack);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Transition timer
+            <string>///Transition state timer
 
-//Is called from scr_state() script whenever a new state is loaded, 
-//the state transition takes a time equal to the variable time_trans
-//set in this object's create event
+if global.previous_state == states.enemy {
+    scr_state(states.player);
+}
 
-script_execute(ds_map_find_value(state, global.state));
+else if global.previous_state == states.player {
+    scr_state(states.enemy);
+}
+
+//script_execute(ds_map_find_value(state, global.state));
 </string>
           </argument>
         </arguments>
@@ -174,13 +178,13 @@ ds_map_destroy(state);
             <kind>1</kind>
             <string>///Draw phase name on transition state
 
-/*
+
 draw_set_font(fnt_overlay);
 draw_set_halign(fa_center);
 draw_set_color(c_white);
 
 if alarm[0] != -1 and global.state == states.transition{
-    draw_text_outline(room_width/2, room_height/2-50, "End turn", 2, c_black);
+    draw_text_outline(room_width/2, room_height/2-50, "End Turn", 2, c_black);
 }
 </string>
           </argument>
