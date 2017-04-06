@@ -58,6 +58,8 @@ ds_map_add(state, states.transition,    scr_transition);
 ds_map_add(state, states.pause,         scr_pause);
 ds_map_add(state, states.player_attack, scr_player_attack);
 ds_map_add(state, states.enemy_attack,  scr_enemy_attack);
+ds_map_add(state, states.player_win,    scr_player_win);
+ds_map_add(state, states.player_lose,   scr_player_lose);
 
 </string>
           </argument>

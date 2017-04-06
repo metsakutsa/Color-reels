@@ -52,6 +52,8 @@
       </scripts>
       <scripts name="Player">
         <script>scripts\scr_player_attack.gml</script>
+        <script>scripts\scr_player_win.gml</script>
+        <script>scripts\scr_player_lose.gml</script>
         <script>scripts\scr_player_turn_init.gml</script>
         <script>scripts\scr_end_player_turn.gml</script>
       </scripts>

@@ -83,6 +83,8 @@ count = 0;
 //Increase click count
 count ++;
 
+show_debug_message(count);
+
 if count &gt; 2 {
     with obj_mana{
         selected = true;
@@ -97,6 +99,7 @@ if count &gt; 2 {
         }
     }
     scr_state(states.player_attack);
+    count = 0;
 }
 else {
     with obj_mana{
@@ -132,7 +135,6 @@ else {
             <kind>1</kind>
             <string>///Draw sprite in variable situations
 
-
 //If clicked then draw red border
 if (position_meeting(mouse_x,mouse_y,self) and mouse_check_button(mb_left)){
     draw_sprite(spr_roll_button, -1, x, y);
@@ -149,6 +151,13 @@ else if (position_meeting(mouse_x,mouse_y,self)){
 else {
     draw_sprite(spr_roll_button, -1, x, y);
 }
+
+
+if count == 2 {
+    image_index = 1;
+}
+
+else image_index = 0;
 </string>
           </argument>
         </arguments>

@@ -144,6 +144,11 @@ draw_text_outline(10,room_height-30, "State: " + string(ds_map_find_value(obj_st
             <string>with obj_mana{
     instance_destroy();
 }
+
+with obj_roll_button{
+    instance_destroy();
+}
+
 scr_game_init();
 </string>
           </argument>
